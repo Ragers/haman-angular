@@ -1,0 +1,5 @@
+<div id="letters">
+  <ul>
+    <li *ngFor="let letter of characters" (click)="open(letter, $event)">{{letter}}</li>
+  </ul>
+</div>

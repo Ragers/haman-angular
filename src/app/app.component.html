@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <h1>Hangman</h1>
+  <ng-container  *ngIf="this.gameService.wonGame$ | async as wonGame; else gameScreen">
+      <h2>You won!</h2>
+      <p>The word was</p>
+      <div id="word" class="flashing" [innerText]="this.gameService.word$ | async"></div>
+      <button (click)="this.gameService.startNewGame()">Continue</button>
+  </ng-container>
+</div>
+
+<ng-template #gameScreen>
+  <ng-container *ngIf="this.gameService.livesLeft$ | async as livesLeft; else noLives">
+    <p>Guess the word before your lives run out</p>
+    <div id="highscore"[innerText]="'High Score: ' + (this.gameService.highscore$ | async)"></div>
+    <div id="score"[innerText]="'Score: ' + (this.gameService.score$ | async)"></div>
+    <app-buttons></app-buttons>
+    <div id="word" [innerText]="this.gameService.renderWord$ | async"></div>
+    <div id="lives" class="mobile">Lives Left: {{livesLeft}}</div>
+    <app-canvas></app-canvas>
+    <div id="lives" class="desktop">Lives Left: {{livesLeft}}</div>
+  </ng-container>
+</ng-template>
+
+<ng-template #noLives>
+  <h2>Game Over</h2>
+  <h3 [innerText]="'Your Score: ' + (this.gameService.score$ | async)"></h3>
+  <p>The word was</p>
+  <div id="word" class="flashing" [innerText]="this.gameService.word$ | async"></div>
+  <button (click)="this.gameService.startNewGame()">Play Again</button>
+</ng-template>

@@ -1,0 +1,33 @@
+#letters {
+  display: block;
+  max-width: 450px;
+  padding: 0 15px;
+  ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    @media screen and (max-width: 600px) {
+      gap: 15px 25px;
+    }
+    li {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      color: white;
+      border: 1px solid white;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 50px;
+
+      &:is([disabled="disabled"]) {
+        opacity: 0.5;
+        cursor: default;
+      }
+      &:not([disabled="disabled"]):hover {
+        background-color: rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
+}
