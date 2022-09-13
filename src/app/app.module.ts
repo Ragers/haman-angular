@@ -4,8 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ButtonsComponent } from './buttons/buttons.component';
-import { CanvasComponent } from './canvas/canvas.component';
+import { ButtonsComponent } from './components/buttons/buttons.component';
+import { CanvasComponent } from './components/canvas/canvas.component';
 
 @NgModule({
   declarations: [
