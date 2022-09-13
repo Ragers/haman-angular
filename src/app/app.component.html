@@ -1,12 +1,19 @@
 <div class="wrapper">
   <h1>Hangman</h1>
-  <ng-container  *ngIf="this.gameService.wonGame$ | async as wonGame; else gameScreen">
-      <h2>You won!</h2>
-      <p>The word was</p>
-      <div id="word" class="flashing" [innerText]="this.gameService.word$ | async"></div>
-      <button (click)="this.gameService.startNewGame()">Continue</button>
+  <ng-container *ngIf="this.gameService.word$ | async; else startScreen">
+    <ng-container  *ngIf="this.gameService.wonGame$ | async as wonGame; else gameScreen">
+        <h2>You won!</h2>
+        <p>The word was</p>
+        <div id="word" class="flashing" [innerText]="this.gameService.word$ | async"></div>
+        <button (click)="this.gameService.startNewGame()">Continue</button>
+    </ng-container>
   </ng-container>
 </div>
+
+<ng-template #startScreen>
+  <h2>Start a new game</h2>
+  <button (click)="this.gameService.startNewGame()">Start</button>
+</ng-template>
 
 <ng-template #gameScreen>
   <ng-container *ngIf="this.gameService.livesLeft$ | async as livesLeft; else noLives">

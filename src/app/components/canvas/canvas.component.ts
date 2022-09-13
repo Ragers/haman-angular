@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { GameService } from '../game.service';
+import { GameService } from 'src/app/services/game.service';
 
 @Component({
   selector: 'app-canvas',
