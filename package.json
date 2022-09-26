@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:prod": "ng build --deploy-url /hangman-angular/"
+    "build:prod": "ng build --prod --sourceMap=false --base-href /hangman-angular/"
   },
   "private": true,
   "dependencies": {
